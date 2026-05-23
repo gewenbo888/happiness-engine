@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void: #0a0608;
+  --dawn: #ff9e4f;
+  --rose: #ff6b81;
+  --calm: #3dd6bd;
+  --mind: #a87fff;
+  --bone: #fdf6ef;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--void);
+  color: var(--bone);
+}
+
+body {
+  background-color: #080406;
+  background-image:
+    radial-gradient(ellipse 1200px 620px at 12% -8%, rgba(255, 158, 79, 0.12), transparent 60%),
+    radial-gradient(ellipse 980px 560px at 90% 4%, rgba(255, 107, 129, 0.10), transparent 62%),
+    radial-gradient(ellipse 1100px 600px at 78% 96%, rgba(168, 127, 255, 0.11), transparent 60%),
+    radial-gradient(ellipse 1000px 560px at 18% 112%, rgba(61, 214, 189, 0.09), transparent 60%);
+  font-family: "Spectral", ui-serif, Georgia, serif;
+  letter-spacing: 0.004em;
+}
+
+::selection {
+  background: rgba(255, 158, 79, 0.38);
+  color: #1a0d06;
+}
+
+/* ---------- type ---------- */
+.display { font-family: "Fraunces", ui-serif, Georgia, serif; font-weight: 600; }
+.zh { font-family: "Noto Serif SC", serif; }
+.label-mono {
+  font-family: "Space Mono", ui-monospace, monospace;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.64rem;
+  color: #6ee9d4;
+}
+
+/* ---------- luminous text ---------- */
+.glow-text {
+  color: #ffd29a;
+  text-shadow: 0 0 18px rgba(255, 158, 79, 0.6), 0 0 54px rgba(255, 107, 129, 0.35);
+}
+.rose-text {
+  color: #ffb3bf;
+  text-shadow: 0 0 18px rgba(255, 107, 129, 0.55);
+}
+.calm-text {
+  color: #9af2e3;
+  text-shadow: 0 0 18px rgba(61, 214, 189, 0.5);
+}
+.mind-text {
+  color: #d8c6ff;
+  text-shadow: 0 0 18px rgba(168, 127, 255, 0.55);
+}
+
+/* ---------- warm translucent card ---------- */
+.card {
+  background: linear-gradient(160deg, rgba(33, 23, 38, 0.82), rgba(15, 10, 14, 0.9));
+  border: 1px solid rgba(255, 158, 79, 0.14);
+  backdrop-filter: blur(7px);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+.card:hover { border-color: rgba(255, 158, 79, 0.34); }
+
+.rule-warm {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 158, 79, 0.5) 18%, rgba(168, 127, 255, 0.42) 82%, transparent);
+}
+
+/* ---------- breathing interface ---------- */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.75; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+.breathe { animation: breathe 7s ease-in-out infinite; }
+
+@keyframes glowpulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+.glow-pulse { animation: glowpulse 3.2s ease-in-out infinite; }
+
+/* pulsing svg nodes */
+@keyframes nodepulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.node-pulse { animation: nodepulse 2.8s ease-in-out infinite; }
+
+/* flowing dashed stroke */
+@keyframes flow { to { stroke-dashoffset: -40; } }
+.flow { stroke-dasharray: 5 7; animation: flow 1.8s linear infinite; }
+
+/* rise in */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise { animation: riseIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+/* travelling spark along a path (offset-path set inline) */
+@keyframes spark {
+  0% { offset-distance: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+/* slow drift for soft particles */
+@keyframes drift {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  14% { opacity: 0.7; }
+  100% { transform: translateY(-70px) translateX(24px); opacity: 0; }
+}
+
+::-webkit-scrollbar { width: 10px; background: #080406; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2e2034, #211726);
+  border-radius: 5px;
+}
+
+/* language fade on toggle */
+.lang-fade { animation: riseIn 0.45s ease both; }
+
+/* range input — warm */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 158, 79, 0.22);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffd29a;
+  box-shadow: 0 0 12px rgba(255, 158, 79, 0.8);
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  background: #ffd29a;
+  box-shadow: 0 0 12px rgba(255, 158, 79, 0.8);
+  cursor: pointer;
+}
